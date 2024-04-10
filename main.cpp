@@ -11,7 +11,7 @@ int main(int argc, char const *argv[])
     
     sorter.sampleIntegerVector(minRange, maxRange);
     sorter.printVector();
-    sorter.bubbleSort(true);
+    sorter.selectionSort(true);
     sorter.printVector();
 
     return 0;

@@ -43,6 +43,31 @@ void Sorter::bubbleSort(bool debug = false)
     std::cout << "Number of swaps: " << swaps << std::endl;
     std::cout << "Number of iterations: " << iterations << std::endl;
 }
+
+void Sorter::selectionSort(bool debug = false) {
+        int swaps = 0;
+        int iterations = 0;
+        for (int i = 0; i < size - 1; ++i) {
+            int minIndex = i;
+            for (int j = i + 1; j < size; ++j) {
+                if (data[j] < data[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            if (minIndex != i) {
+                std::swap(data[i], data[minIndex]);
+                swaps++;
+            }
+            iterations++;
+            if (debug) {
+                std::cout << "After iteration " << i + 1 << ":" << std::endl;
+                Sorter::printVector();
+            }
+        }
+        std::cout << "Number of swaps: " << swaps << std::endl;
+        std::cout << "Number of iterations: " << iterations << std::endl;
+    }
+
 void Sorter::printVector()
 {
     std::cout << "Vector elements:" << std::endl;
