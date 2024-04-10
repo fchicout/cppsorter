@@ -9,7 +9,7 @@ public:
     Sorter(int size);
 
     void sampleIntegerVector(int min, int max);
-    void bubbleSort();
+    void bubbleSort(bool);
     void printVector();
 
 private:

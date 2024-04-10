@@ -18,13 +18,17 @@ void Sorter::sampleIntegerVector(int min, int max)
     }
 }
 
-void Sorter::bubbleSort() {
+void Sorter::bubbleSort(bool debug = false) {
         for (int i = 0; i < size - 1; ++i) {
             for (int j = 0; j < size - i - 1; ++j) {
                 if (data[j] > data[j + 1]) {
                     // Swap array[j] and array[j + 1] using std::swap
                     std::swap(data[j], data[j + 1]);
                 }
+            }
+            if (debug) {
+                std::cout << "After iteration " << i + 1 << ":" << std::endl;
+                Sorter::printVector();
             }
         }
     }
