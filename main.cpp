@@ -3,34 +3,48 @@
 #include <cstdlib>
 #include <ctime>
 
-void sampleIntegerVector(std::vector<int> &array, int size, int min, int max)
+class Sorter
 {
-    srand(time(nullptr));
-
-    for (int i = 0; i < size; i++)
+public:
+    Sorter(int size) : size(size)
     {
-        array[i] = rand() % ((max - min + 1) + min);
+        data.resize(size);
     }
-}
 
-void printVector(){
-    
-}
+    void sampleIntegerVector(int min, int max)
+    {
+        srand(time(nullptr));
+
+        for (int i = 0; i < size; i++)
+        {
+            data[i] = rand() % ((max - min + 1) + min);
+        }
+    }
+    void printVector()
+    {
+        std::cout << "Vector elements:" << std::endl;
+        for (int i = 0; i < size; ++i)
+        {
+            std::cout << data[i] << " ";
+        }
+        std::cout << std::endl;
+    }
+
+private:
+    std::vector<int> data;
+    int size;
+};
 
 int main(int argc, char const *argv[])
 {
-    std::vector<int> data;
-    int vectorInitialSize = 10;
+    const int vectorInitialSize = 10;
     int minRange = 0, maxRange = 100;
 
-    data.resize(vectorInitialSize);
+    Sorter sorter(vectorInitialSize);
+    
+    sorter.sampleIntegerVector(minRange, maxRange);
 
-    sampleIntegerVector(data, vectorInitialSize, minRange, maxRange);
-
-    for (int i = 0; i < vectorInitialSize; i++)
-    {
-        std::cout << data[i] << " " << std::endl;
-    }
+    sorter.printVector();
 
     return 0;
 }
