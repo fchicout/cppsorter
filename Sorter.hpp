@@ -11,6 +11,8 @@ public:
     void sampleIntegerVector(int min, int max);
     void bubbleSort(bool);
     void selectionSort(bool);
+
+    void compareSorts();
     void printVector();
 
 private:
