@@ -1,7 +1,7 @@
 #include "Sorter.hpp"
 #include <iostream>
-#include <cstdlib> // For rand() and srand()
-#include <ctime>   // For time()
+#include <cstdlib>   // For rand() and srand()
+#include <ctime>     // For time()
 #include <algorithm> // For std::swap
 #include <chrono>    // For timing
 
@@ -76,16 +76,29 @@ void Sorter::selectionSort(bool debug = false)
     std::cout << "Selection Sort - Number of iterations: " << iterations << std::endl;
 }
 
-void Sorter::mergeSort(int left, int right) {
-    if (left < right) {
+void Sorter::mergeSort(int left, int right, bool debug = false)
+{
+    int swaps = 0;
+    int iterations = 0;
+    if (left < right)
+    {
         int middle = left + (right - left) / 2;
         mergeSort(left, middle);
         mergeSort(middle + 1, right);
-        merge(left, middle, right);
+        swaps += merge(left, middle, right, debug, iterations);
+        if (debug)
+        {
+            std::cout << "After merge: ";
+            printVector();
+            std::cout << "Merge Sort - Number of swaps: " << swaps << std::endl;
+            std::cout << "Merge Sort - Number of iterations: " << iterations << std::endl;
+        }
     }
 }
 
-void Sorter::merge(int left, int middle, int right) {
+int Sorter::merge(int left, int middle, int right, bool debug, int &iterations)
+{
+    int swaps = 0;
     int n1 = middle - left + 1;
     int n2 = right - middle;
 
@@ -99,15 +112,19 @@ void Sorter::merge(int left, int middle, int right) {
         rightArray[j] = data[middle + 1 + j];
 
     // Merge the temp arrays back into data[left..right]
-    int i = 0; // Initial index of first subarray
-    int j = 0; // Initial index of second subarray
+    int i = 0;    // Initial index of first subarray
+    int j = 0;    // Initial index of second subarray
     int k = left; // Initial index of merged subarray
 
-    while (i < n1 && j < n2) {
-        if (leftArray[i] <= rightArray[j]) {
+    while (i < n1 && j < n2)
+    {
+        if (leftArray[i] <= rightArray[j])
+        {
             data[k] = leftArray[i];
             i++;
-        } else {
+        }
+        else
+        {
             data[k] = rightArray[j];
             j++;
         }
@@ -115,20 +132,22 @@ void Sorter::merge(int left, int middle, int right) {
     }
 
     // Copy the remaining elements of leftArray[], if any
-    while (i < n1) {
+    while (i < n1)
+    {
         data[k] = leftArray[i];
         i++;
         k++;
     }
 
     // Copy the remaining elements of rightArray[], if any
-    while (j < n2) {
+    while (j < n2)
+    {
         data[k] = rightArray[j];
         j++;
         k++;
     }
+    return swaps;
 }
-
 
 void Sorter::compareSorts()
 {
