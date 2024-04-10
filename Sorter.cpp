@@ -163,8 +163,17 @@ void Sorter::compareSorts()
     endTime = std::chrono::high_resolution_clock::now();
     auto selectionSortDuration = std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count();
 
+    data = originalArray; // Reset the array to its original state
+    
+    // Merge Sort
+    startTime = std::chrono::high_resolution_clock::now();
+    mergeSort(0, size - 1, false); // Merge sort without debug
+    endTime = std::chrono::high_resolution_clock::now();
+    auto mergeSortDuration = std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count();
+
     std::cout << "Bubble Sort Duration: " << bubbleSortDuration << " milliseconds" << std::endl;
     std::cout << "Selection Sort Duration: " << selectionSortDuration << " milliseconds" << std::endl;
+    std::cout << "Merge Sort Duration: " << mergeSortDuration << " milliseconds" << std::endl;
 }
 void Sorter::printVector()
 {
