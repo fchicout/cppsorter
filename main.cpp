@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <cstdlib> 
+#include <ctime>
 
 int main(int argc, char const *argv[])
 {
@@ -8,6 +10,8 @@ int main(int argc, char const *argv[])
     int minRange=0, maxRange=100;
 
     data.resize(vectorInitialSize);
+
+    srand(time(nullptr));
 
     for (int i = 0; i < vectorInitialSize; i++)
     {
