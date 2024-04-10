@@ -1,6 +1,9 @@
 # Prerequisites
 *.d
 
+*.ilk
+*.pdb
+
 # Compiled Object files
 *.slo
 *.lo
@@ -148,5 +151,3 @@ m4/lt~obsolete.m4
 # can automatically generate from config.status script
 # (which is called by configure script))
 Makefile
-*.ilk
-*.pdb

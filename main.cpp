@@ -1,10 +1,25 @@
 #include <iostream>
+#include <vector>
 
 int main(int argc, char const *argv[])
 {
-    int randomNumber = rand();
+    std::vector<int> data;
+    int vectorInitialSize = 10;
 
-    std::cout << randomNumber << std::endl;
+    data.resize(vectorInitialSize);
+
+    for (int i = 0; i < vectorInitialSize; i++)
+    {
+        data[i] = rand();
+    }
+    
+    
+
+    for (int i = 0; i < vectorInitialSize; i++)
+    {
+        std::cout << data[i] << " " <<  std::endl;
+    }
+    
 
     return 0;
 }
