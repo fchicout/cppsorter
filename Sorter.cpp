@@ -149,13 +149,15 @@ int Sorter::merge(int left, int middle, int right, bool debug, int &iterations)
     return swaps;
 }
 
-void Sorter::quickSort(int left, int right, bool debug)
-{
-    if (left < right)
-    {
+void Sorter::quickSort(int left, int right, bool debug) {
+    if (left < right) {
         int pivotIndex = partition(left, right, debug);
         quickSort(left, pivotIndex - 1, debug);
         quickSort(pivotIndex + 1, right, debug);
+        if (debug) {
+            std::cout << "After partition: ";
+            printVector();
+        }
     }
 }
 
