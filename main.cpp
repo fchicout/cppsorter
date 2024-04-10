@@ -10,7 +10,8 @@ int main(int argc, char const *argv[])
     Sorter sorter(vectorInitialSize);
     
     sorter.sampleIntegerVector(minRange, maxRange);
-
+    sorter.printVector();
+    sorter.bubbleSort();
     sorter.printVector();
 
     return 0;

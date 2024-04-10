@@ -17,6 +17,17 @@ void Sorter::sampleIntegerVector(int min, int max)
         data[i] = rand() % ((max - min + 1) + min);
     }
 }
+
+void Sorter::bubbleSort() {
+        for (int i = 0; i < size - 1; ++i) {
+            for (int j = 0; j < size - i - 1; ++j) {
+                if (data[j] > data[j + 1]) {
+                    // Swap array[j] and array[j + 1] using std::swap
+                    std::swap(data[j], data[j + 1]);
+                }
+            }
+        }
+    }
 void Sorter::printVector()
 {
     std::cout << "Vector elements:" << std::endl;
