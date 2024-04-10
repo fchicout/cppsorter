@@ -10,7 +10,7 @@ int main(int argc, char const *argv[])
 
     sorter.sampleIntegerVector(minRange, maxRange);
     sorter.printVector();
-    sorter.mergeSort(0, vectorInitialSize, true);
+    sorter.quickSort(0, vectorInitialSize - 1, true);
     sorter.printVector();
 
     return 0;

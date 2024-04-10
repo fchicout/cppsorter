@@ -149,6 +149,34 @@ int Sorter::merge(int left, int middle, int right, bool debug, int &iterations)
     return swaps;
 }
 
+void Sorter::quickSort(int left, int right, bool debug)
+{
+    if (left < right)
+    {
+        int pivotIndex = partition(left, right, debug);
+        quickSort(left, pivotIndex - 1, debug);
+        quickSort(pivotIndex + 1, right, debug);
+    }
+}
+
+int Sorter::partition(int left, int right, bool debug)
+{
+    int pivot = data[right];
+    int i = left - 1;
+
+    for (int j = left; j < right; j++)
+    {
+        if (data[j] <= pivot)
+        {
+            i++;
+            std::swap(data[i], data[j]);
+        }
+    }
+
+    std::swap(data[i + 1], data[right]);
+    return i + 1;
+}
+
 void Sorter::compareSorts()
 {
     std::vector<int> originalArray = data; // Store the original array for comparison
@@ -164,7 +192,7 @@ void Sorter::compareSorts()
     auto selectionSortDuration = std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count();
 
     data = originalArray; // Reset the array to its original state
-    
+
     // Merge Sort
     startTime = std::chrono::high_resolution_clock::now();
     mergeSort(0, size - 1, false); // Merge sort without debug
