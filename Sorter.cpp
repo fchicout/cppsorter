@@ -18,20 +18,31 @@ void Sorter::sampleIntegerVector(int min, int max)
     }
 }
 
-void Sorter::bubbleSort(bool debug = false) {
-        for (int i = 0; i < size - 1; ++i) {
-            for (int j = 0; j < size - i - 1; ++j) {
-                if (data[j] > data[j + 1]) {
-                    // Swap array[j] and array[j + 1] using std::swap
-                    std::swap(data[j], data[j + 1]);
-                }
-            }
-            if (debug) {
-                std::cout << "After iteration " << i + 1 << ":" << std::endl;
-                Sorter::printVector();
+void Sorter::bubbleSort(bool debug = false)
+{
+    int swaps = 0;
+    int iterations = 0;
+    for (int i = 0; i < size - 1; ++i)
+    {
+        for (int j = 0; j < size - i - 1; ++j)
+        {
+            if (data[j] > data[j + 1])
+            {
+                // Swap array[j] and array[j + 1] using std::swap
+                std::swap(data[j], data[j + 1]);
+                swaps++;
             }
         }
+        iterations++;
+        if (debug)
+        {
+            std::cout << "After iteration " << i + 1 << ":" << std::endl;
+            Sorter::printVector();
+        }
     }
+    std::cout << "Number of swaps: " << swaps << std::endl;
+    std::cout << "Number of iterations: " << iterations << std::endl;
+}
 void Sorter::printVector()
 {
     std::cout << "Vector elements:" << std::endl;
