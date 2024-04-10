@@ -9,7 +9,6 @@
                 "/EHsc",
                 "/nologo",
                 "/Fe${fileDirname}\\${fileBasenameNoExtension}.exe",
-                "${file}",
                 "*.cpp"
             ],
             "options": {
