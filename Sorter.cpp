@@ -16,7 +16,7 @@ void Sorter::sampleIntegerVector(int min, int max)
 
     for (int i = 0; i < size; i++)
     {
-        data[i] = rand() % ((max - min + 1) + min);
+        data[i] = (rand() % ((max - min + 1))) + min;
     }
 }
 
