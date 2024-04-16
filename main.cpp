@@ -4,7 +4,7 @@
 int main(int argc, char const *argv[])
 {
     const int vectorInitialSize = 10;
-    int minRange = 0, maxRange = 100;
+    int minRange = 50, maxRange = 150;
 
     Sorter sorter(vectorInitialSize);
 
